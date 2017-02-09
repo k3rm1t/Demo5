@@ -1,0 +1,54 @@
+// Program.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+// henkilorekisteri
+// 9.2.2017
+// k3rm1t
+namespace teht1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // creeate persons(collection)
+            Persons myfriends = new Persons();
+
+            // create a few person objects
+            Person person1 = new Person { Firstname = "matti", Lastname = "Jkokiu", SocialSecurityNumber = "1231232-0983" };
+            Person person2 = new Person { Firstname = "Seppo", Lastname = "joku", SocialSecurityNumber = "122455-2345" };
+            Person person3 = new Person { Firstname = "teppo", Lastname = "joku", SocialSecurityNumber = "55555-6543" };
+
+            // add Person object to Persons (myfriends)
+            myfriends.AddPerson(person1);
+            myfriends.AddPerson(person2);
+            myfriends.AddPerson(person3);
+
+            // get one person
+            Person person4 = myfriends.GetPerson(0);
+            if (person4 != null)
+            {
+                Console.WriteLine(person4.ToString());
+            }else
+            {
+                Console.WriteLine("No person in that position!");
+            }
+            //print collection 
+            myfriends.PrintData();
+
+            // find person
+            string SocialSecurityNumber = "55555-6543";
+            Console.WriteLine("Find person with ssn: " + SocialSecurityNumber);
+            Person person5 = myfriends.FindPerson(SocialSecurityNumber);
+            if (person5 != null)
+            {
+                Console.WriteLine(person5.ToString());
+            }else
+            {
+                Console.WriteLine("Can't find person with that ssn!");
+            }
+        }
+    }
+}
